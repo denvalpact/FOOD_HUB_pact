@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBAN BRISTOL FOODS | Affordable, Trusted Meals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #2E2E2E;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --success: #28A745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+        }
+        
+        /* ===== Header ===== */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 1.8rem;
+        }
+        
+        .logo-tagline {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 30px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            padding-right: 45px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 20px;
+        }
+        
+        .sign-in {
+            color: var(--dark);
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .register {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .register:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        /* ===== Hero Banner ===== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* ===== Value Propositions ===== */
+        .values {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* ===== Menu Section ===== */
+        .menu {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .menu-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .menu-price {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .menu-info {
+            padding: 20px;
+        }
+        
+        .menu-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .menu-desc {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .menu-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+        
+        /* ===== Testimonials ===== */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 500;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 60px;
+            color: rgba(78, 205, 196, 0.1);
+            z-index: 0;
+        }
+        
+        /* ===== Location ===== */
+        .location {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .location-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .location-info {
+            padding: 20px;
+        }
+        
+        .location-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .location-hours {
+            margin: 20px 0;
+        }
+        
+        .hours-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .location-cta {
+            margin-top: 30px;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== Newsletter ===== */
+        .newsletter {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter .section-title {
+            color: white;
+        }
+        
+        .newsletter .section-title:after {
+            background: white;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        .newsletter-btn {
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: black;
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .footer-about {
+            max-width: 300px;
+        }
+        
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== Responsive Design ===== */
+        @media (max-width: 1024px) {
+            .header-container {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                order: 3;
+                width: 100%;
+                margin: 15px 0;
+            }
+            
+            .nav-links {
+                order: 2;
+            }
+            
+            .auth-buttons {
+                order: 1;
+                margin-left: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Replace with hamburger menu in real implementation */
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .location-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-btn {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-main">URBAN BRISTOL FOODS</span>
+                <span class="logo-tagline">Trusted • Affordable • Welcoming</span>
+            </a>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search our menu...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="login.html" class="sign-in"><i class="far fa-user"></i> Sign In</a>
+                <a href="register.html" class="register">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero Banner ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Great Food, Fair Prices</h1>
+            <p>Your trusted spot for fresh, urban-inspired meals and snacks that feel like home</p>
+            <a href="menu.html" class="btn btn-primary">View Our Menu →</a>
+        </div>
+    </section>
+
+    <!-- ===== Our Values ===== -->
+    <section class="values">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Trusted Quality</h3>
+                    <p>We use only the freshest ingredients to create meals you can rely on, every time.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3 class="value-title">Fair Prices</h3>
+                    <p>Delicious food shouldn't break the bank. We keep our prices affordable for everyone.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🏠</div>
+                    <h3 class="value-title">Welcoming Atmosphere</h3>
+                    <p>More than just a meal - it's a place to relax and feel at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Menu Section ===== -->
+    <section class="menu">
+        <div class="container">
+            <h2 class="section-title">Customer Favorites</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">Try our most-loved dishes at prices that can't be beat</p>
+            
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                        <div class="menu-price">£7.99</div>
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Bristol Burger</h3>
+                        <p class="menu-desc">Our signature beef burger with cheddar, bacon, and special sauce</p>
+                        <span class="menu-badge">BESTSELLER</span>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                        <div class="menu-price">£6.49</div>
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Veggie Wrap</h3>
+                        <p class="menu-desc">Grilled vegetables with hummus and feta in a warm tortilla</p>
+                        <span class="menu-badge">VEGETARIAN</span>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                        <div class="menu-price">£3.99</div>
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Chocolate Brownie</h3>
+                        <p class="menu-desc">Warm, fudgy brownie with vanilla ice cream</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn btn-primary">View Full Menu →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">"My go-to spot in Bristol! The food is consistently excellent and the prices are unbeatable. Feels like a second home."</p>
+                    <p class="testimonial-author">— Sarah T., Regular Customer</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">"As a student, I really appreciate the affordable prices without compromising on quality. The veggie options are amazing!"</p>
+                    <p class="testimonial-author">— James L., University of Bristol</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">"The staff make you feel so welcome. It's become our family's favorite weekend treat spot."</p>
+                    <p class="testimonial-author">— Emma R., Clifton</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Location ===== -->
+    <section class="location">
+        <div class="container">
+            <div class="location-container">
+                <div class="location-info">
+                    <h2 class="location-title">Visit Us</h2>
+                    <p>Find us in the heart of Bristol for a delicious meal in a welcoming atmosphere.</p>
+                    
+                    <div class="location-hours">
+                        <h3 class="hours-title">Opening Hours</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday - Friday</span> <span>8am - 10pm</span></li>
+                            <li><span>Saturday</span> <span>9am - 11pm</span></li>
+                            <li><span>Sunday</span> <span>10am - 8pm</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="location-cta">
+                        <a href="contact.html" class="btn btn-primary">Get Directions →</a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <!-- In a real implementation, this would be a Google Maps embed -->
+                    <div style="width: 100%; height: 100%; background-color: #ddd; display: flex; align-items: center; justify-content: center;">
+                        <p>Google Maps would appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Newsletter ===== -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Join Our Food Community</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">Sign up for exclusive deals and be the first to know about new menu items.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="btn newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">URBAN BRISTOL FOODS</a>
+                    <p>Serving trusted, affordable food in a welcoming atmosphere since 2023.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Bristol</li>
+                        <li><i class="fas fa-phone"></i> (01234) 567890</li>
+                        <li><i class="fas fa-envelope"></i> hello@urbanbristolfoods.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 URBAN BRISTOL FOODS. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--primary);"></i> in Bristol.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
