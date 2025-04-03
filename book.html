@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table - Bristol Foods Kikoni</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --dark: #2c3e50;
+            --light: #f9f9f9;
+            --gray: #666;
+            --light-gray: #ddd;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--dark);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        .active {
+            color: var(--primary);
+        }
+        
+        /* Booking Hero Section */
+        .booking-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        .booking-hero h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Booking Content */
+        .booking-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 80px 0;
+            gap: 40px;
+        }
+        .booking-form-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        .booking-info-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* Form Styles */
+        .booking-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        .radio-option input {
+            margin-right: 8px;
+        }
+        .btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Calendar Styles */
+        .calendar-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .calendar-title {
+            font-size: 20px;
+            color: var(--dark);
+        }
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        .calendar-nav-btn {
+            background: var(--light);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            padding: 5px;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        .calendar-day {
+            background: var(--light);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .calendar-day:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .calendar-day.today {
+            background: #f0ad4e;
+            color: white;
+        }
+        .calendar-day.selected {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Time Slots */
+        .time-slots-container {
+            margin-top: 30px;
+        }
+        .time-slots-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .time-slot {
+            background: var(--light);
+            border: 1px solid var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .time-slot:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+        .time-slot.booked {
+            background: var(--light);
+            color: #ccc;
+            cursor: not-allowed;
+            text-decoration: line-through;
+            border-color: #eee;
+        }
+        
+        /* Table Selection */
+        .table-selection {
+            margin-top: 30px;
+        }
+        .table-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .table-option {
+            flex: 1;
+            min-width: 120px;
+        }
+        .table-option input {
+            display: none;
+        }
+        .table-option label {
+            display: block;
+            padding: 15px;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .table-option input:checked + label {
+            border-color: var(--primary);
+            background: rgba(230, 126, 34, 0.1);
+        }
+        .table-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Payment Options */
+        .payment-options {
+            margin: 30px 0;
+        }
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+        }
+        .payment-method input {
+            display: none;
+        }
+        .payment-method label {
+            display: block;
+            padding: 15px;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .payment-method input:checked + label {
+            border-color: var(--primary);
+            background: rgba(230, 126, 34, 0.1);
+        }
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        /* Restaurant Info */
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .info-item i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-right: 15px;
+            width: 25px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .footer-section {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin-left: 15px;
+            }
+            .booking-content {
+                flex-direction: column;
+            }
+            .calendar-day {
+                height: 30px;
+                font-size: 14px;
+            }
+            .footer-section {
+                flex-basis: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Bristol <span>Foods Kikoni</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bookings.html" class="active">Bookings</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Booking Hero Section -->
+    <section class="booking-hero">
+        <div class="container">
+            <h1>Book Your Table</h1>
+        </div>
+    </section>
+
+    <!-- Booking Content -->
+    <section class="container booking-content">
+        <!-- Booking Form Section -->
+        <div class="booking-form-section">
+            <form id="bookingForm" class="booking-card">
+                <h2 class="section-title">Reservation Details</h2>
+                
+                <div class="form-group">
+                    <label for="bookingDate">Date</label>
+                    <input type="date" id="bookingDate" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bookingTime">Time</label>
+                    <select id="bookingTime" class="form-control" required>
+                        <option value="">Select a time</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="11:30">11:30 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="12:30">12:30 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="17:30">5:30 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="18:30">6:30 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="19:30">7:30 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="partySize">Number of Guests</label>
+                    <select id="partySize" class="form-control" required>
+                        <option value="">Select number</option>
+                        <option value="1">1 person</option>
+                        <option value="2">2 people</option>
+                        <option value="3">3 people</option>
+                        <option value="4">4 people</option>
+                        <option value="5">5 people</option>
+                        <option value="6">6 people</option>
+                        <option value="7">7 people</option>
+                        <option value="8">8 people</option>
+                        <option value="9">9 people</option>
+                        <option value="10">10 people</option>
+                        <option value="11">11+ people (Group booking)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Seating Preference</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="indoor" name="seating" value="indoor" checked>
+                            <label for="indoor">Indoor</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="outdoor" name="seating" value="outdoor">
+                            <label for="outdoor">Outdoor</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="private" name="seating" value="private">
+                            <label for="private">Private Booth</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Table Selection -->
+                <div class="table-selection">
+                    <label>Table Preference (Optional)</label>
+                    <div class="table-options">
+                        <div class="table-option">
+                            <input type="radio" id="table1" name="table" value="Window">
+                            <label for="table1">
+                                <div class="table-icon"><i class="fas fa-window-maximize"></i></div>
+                                <div>Window</div>
+                            </label>
+                        </div>
+                        <div class="table-option">
+                            <input type="radio" id="table2" name="table" value="Center">
+                            <label for="table2">
+                                <div class="table-icon"><i class="fas fa-square"></i></div>
+                                <div>Center</div>
+                            </label>
+                        </div>
+                        <div class="table-option">
+                            <input type="radio" id="table3" name="table" value="Private">
+                            <label for="table3">
+                                <div class="table-icon"><i class="fas fa-user-friends"></i></div>
+                                <div>Private</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" class="form-control" rows="3" placeholder="Birthday, anniversary, allergies, etc."></textarea>
+                </div>
+                
+                <!-- Payment Options -->
+                <div class="payment-options">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="mobile-money" name="payment" value="mobile-money" checked>
+                            <label for="mobile-money">
+                                <img src="https://via.placeholder.com/40x25?text=MTN" alt="Mobile Money" class="payment-icon">
+                                <div>Mobile Money</div>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="cash" name="payment" value="cash">
+                            <label for="cash">
+                                <img src="https://via.placeholder.com/40x25?text=Cash" alt="Cash" class="payment-icon">
+                                <div>Pay at Restaurant</div>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="card" name="payment" value="card">
+                            <label for="card">
+                                <img src="https://via.placeholder.com/40x25?text=Card" alt="Card" class="payment-icon">
+                                <div>Credit Card</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Complete Booking</button>
+            </form>
+            
+            <!-- Special Offers -->
+            <div class="booking-card">
+                <h2 class="section-title">Special Offers</h2>
+                <p>Book online and enjoy:</p>
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li>10% off your total bill for weekday lunch bookings</li>
+                    <li>Free dessert for anniversary celebrations</li>
+                    <li>Complimentary welcome drink for first-time visitors</li>
+                </ul>
+                <button class="btn btn-outline">View All Offers</button>
+            </div>
+        </div>
+        
+        <!-- Booking Info Section -->
+        <div class="booking-info-section">
+            <!-- Calendar -->
+            <div class="booking-card">
+                <div class="calendar-header">
+                    <h3 class="calendar-title">March 2024</h3>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                    
+                    <!-- Calendar Days -->
+                    <div class="calendar-day disabled">26</div>
+                    <div class="calendar-day disabled">27</div>
+                    <div class="calendar-day disabled">28</div>
+                    <div class="calendar-day disabled">29</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day today selected">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                </div>
+                
+                <!-- Time Slots -->
+                <div class="time-slots-container">
+                    <h4 class="time-slots-title">Available Times for March 20</h4>
+                    <div class="time-slots">
+                        <button class="time-slot">11:00 AM</button>
+                        <button class="time-slot">11:30 AM</button>
+                        <button class="time-slot">12:00 PM</button>
+                        <button class="time-slot">12:30 PM</button>
+                        <button class="time-slot booked">1:00 PM</button>
+                        <button class="time-slot booked">1:30 PM</button>
+                        <button class="time-slot">5:00 PM</button>
+                        <button class="time-slot selected">5:30 PM</button>
+                        <button class="time-slot">6:00 PM</button>
+                        <button class="time-slot">6:30 PM</button>
+                        <button class="time-slot">7:00 PM</button>
+                        <button class="time-slot">7:30 PM</button>
+                        <button class="time-slot">8:00 PM</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant Info -->
+            <div class="info-card">
+                <h2 class="section-title">Restaurant Information</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p><strong>Location:</strong></p>
+                        <p>Opposite Nalika Hostel, Kampala</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <p><strong>Reservations:</strong></p>
+                        <p>+256 756 798009</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p><strong>Email:</strong></p>
+                        <p>reservations@bristolkikoni.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <p><strong>Hours:</strong></p>
+                        <p>Monday-Saturday: 8AM-10PM</p>
+                        <p>Sunday: 10AM-9PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cancellation Policy -->
+            <div class="info-card">
+                <h2 class="section-title">Cancellation Policy</h2>
+                <p>We understand plans change. Please notify us at least 2 hours before your reservation if you need to cancel or modify your booking.</p>
+                <p style="margin-top: 10px;">For group reservations of 8 or more, we require 24 hours notice for cancellations. No-shows may be subject to a fee of 20,000 UGX.</p>
+                <p style="margin-top: 10px;">For reservations with deposit payments, cancellations within 24 hours will forfeit the deposit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Opposite Nalika Hostel, Kampala</p>
+                    <p><i class="fas fa-phone"></i> +256 756 798009</p>
+                    <p><i class="fas fa-envelope"></i> bristolfoodskikoni@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Saturday: 8 AM - 10 PM</p>
+                    <p>Sunday: 10 AM - 9 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Bristol Foods Kikoni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar navigation
+        const prevBtn = document.querySelector('.calendar-nav-btn:first-child');
+        const nextBtn = document.querySelector('.calendar-nav-btn:last-child');
+        
+        prevBtn.addEventListener('click', () => {
+            console.log('Previous month');
+            // Add actual calendar navigation logic
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            console.log('Next month');
+            // Add actual calendar navigation logic
+        });
+        
+        // Date selection
+        document.querySelectorAll('.calendar-day:not(.disabled)').forEach(day => {
+            day.addEventListener('click', function() {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                this.classList.add('selected');
+                // Update available times for selected date
+                console.log('Selected date:', this.textContent);
+            });
+        });
+        
+        // Time slot selection
+        document.querySelectorAll('.time-slot:not(.booked)').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                // Update reservation time in form
+                document.getElementById('bookingTime').value = this.textContent.trim();
+            });
+        });
+        
+        // Table selection
+        document.querySelectorAll('.table-option input').forEach(option => {
+            option.addEventListener('change', function() {
+                console.log('Selected table:', this.value);
+            });
+        });
+        
+        // Payment method selection
+        document.querySelectorAll('.payment-method input').forEach(method => {
+            method.addEventListener('change', function() {
+                console.log('Selected payment:', this.value);
+            });
+        });
+        
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('bookingTime').value,
+                guests: document.getElementById('partySize').value,
+                seating: document.querySelector('input[name="seating"]:checked').value,
+                table: document.querySelector('input[name="table"]:checked')?.value || '',
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phoneNumber').value,
+                email: document.getElementById('email').value,
+                requests: document.getElementById('specialRequests').value,
+                payment: document.querySelector('input[name="payment"]:checked').value
+            };
+            
+            console.log('Form submitted:', formData);
+            
+            // In a real implementation, this would send data to your backend
+            alert('Booking submitted successfully! A confirmation will be sent to your contact details.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Set minimum date for date picker (today)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('bookingDate').min = today;
+    </script>
+</body>
+</html>
