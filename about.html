@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="URBAN BRISTOL FOODS - Trusted, affordable meals and snacks in a welcoming atmosphere. Fresh, urban-inspired food for happy customers.">
-    <title>About Us | URBAN BRISTOL FOODS</title>
+    <title>About Us - Bristol Foods Kikoni</title>
     <style>
         /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
@@ -21,413 +20,547 @@
         }
         
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Header Styles (Same as Homepage) */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
+            position: fixed;
+            width: 100%;
             z-index: 100;
-            padding: 15px 0;
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            color: #ff6b6b;
+            color: #e67e22;
             text-decoration: none;
         }
         
-        .nav-links {
+        .logo span {
+            color: #2c3e50;
+        }
+        
+        nav ul {
             display: flex;
-            gap: 20px;
-            align-items: center;
+            list-style: none;
         }
         
-        .nav-links a {
-            color: #333;
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
             text-decoration: none;
+            color: #333;
             font-weight: 500;
             transition: color 0.3s;
         }
         
-        .nav-links a:hover {
-            color: #ff6b6b;
+        nav ul li a:hover {
+            color: #e67e22;
         }
         
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-            margin-left: 20px;
+        .active {
+            color: #e67e22;
         }
         
-        .auth-buttons a {
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .sign-in {
-            color: #333;
-            border: 1px solid #ddd;
-        }
-        
-        .sign-in:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .register {
-            background-color: #ff6b6b;
-            color: white;
-        }
-        
-        .register:hover {
-            background-color: #ff5252;
-        }
-        
-        /* Hero Section */
+        /* About Hero Section */
         .about-hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 400px;
+            height: 300px;
             display: flex;
             align-items: center;
-            color: white;
             text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .about-hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            color: #fff;
+            margin-top: 80px;
         }
         
         .about-hero h1 {
             font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
-        .about-hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        /* About Sections */
+        .about-section {
+            padding: 80px 0;
         }
         
-        /* Mission/Vision Sections */
-        .mission-vision {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
-        
-        .mv-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .section-title {
             text-align: center;
-            transition: transform 0.3s;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #e67e22;
         }
         
-        .mv-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .mv-card h2 {
-            color: #ff6b6b;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        
-        .mv-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #ff6b6b;
-        }
-        
-        /* Objectives Section */
-        .objectives {
-            background-color: #fff8f8;
-            padding: 60px 0;
-            margin: 60px 0;
-            border-radius: 10px;
-        }
-        
-        .objective-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .objective-item {
+        .about-content {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .objective-check {
-            color: #ff6b6b;
-            font-size: 24px;
-            margin-right: 15px;
-            margin-top: 3px;
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 60px 0;
-        }
-        
-        .gallery-item {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-        
-        /* CTA Section */
-        .about-cta {
-            background-color: #ff6b6b;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            border-radius: 10px;
-            margin: 60px 0;
-        }
-        
-        .about-cta h2 {
-            margin-bottom: 20px;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: white;
-            color: #ff6b6b;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: transform 0.3s;
-            margin-top: 20px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            align-items: center;
+            margin-bottom: 60px;
             flex-wrap: wrap;
         }
         
-        .footer-links a {
-            color: white;
-            text-decoration: none;
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+            min-width: 300px;
         }
         
-        .footer-links a:hover {
-            text-decoration: underline;
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Team Section */
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #f1f1f1;
+        }
+        
+        .team-member h3 {
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p.position {
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* Awards Section */
+        .awards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .award {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .award i {
+            font-size: 40px;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: #f1f1f1;
+            padding: 80px 0;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: """;
+            font-size: 80px;
+            color: #e67e22;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        /* Footer (Same as Homepage) */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #e67e22;
         }
         
         .copyright {
-            color: #aaa;
-            font-size: 14px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
         }
         
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .header-container {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                order: 2;
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .auth-buttons {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        
         @media (max-width: 768px) {
-            .about-hero {
-                height: 300px;
+            .header-container {
+                flex-direction: column;
             }
             
-            .about-hero h1 {
-                font-size: 36px;
+            nav ul {
+                margin-top: 20px;
             }
             
-            .about-hero p {
-                font-size: 18px;
+            nav ul li {
+                margin-left: 15px;
             }
             
-            .mission-vision {
-                grid-template-columns: 1fr;
+            .about-content {
+                flex-direction: column;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .about-hero h1 {
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .section-title {
                 font-size: 28px;
             }
             
-            .about-hero p {
-                font-size: 16px;
+            .footer-section {
+                flex-basis: 100%;
+                text-align: center;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">URBAN BRISTOL FOODS</a>
-            
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html" class="active">About</a>
-                <a href="contact.html">Contact</a>
-                
-                <div class="auth-buttons">
-                    <a href="login.html" class="sign-in">Sign In</a>
-                    <a href="register.html" class="register">Register</a>
-                </div>
+            <a href="index.html" class="logo">Bristol <span>Foods Kikoni</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="reserve.html">Reservations</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="about-hero" aria-label="Our mission">
-        <div class="about-hero-content">
-            <h1>Welcome to Urban Bristol Foods</h1>
-            <p>Where great taste meets a welcoming atmosphere</p>
-        </div>
-    </section>
-
-    <!-- Mission & Vision Section -->
-    <section class="container">
-        <div class="mission-vision">
-            <div class="mv-card">
-                <div class="mv-icon">🌟</div>
-                <h2>Our Mission</h2>
-                <p>To serve trusted, affordable food and snacks, creating a welcoming spot where people can eat, relax, and feel at home.</p>
-            </div>
-            
-            <div class="mv-card">
-                <div class="mv-icon">👁️</div>
-                <h2>Our Vision</h2>
-                <p>To be the best in fresh, urban-inspired meals and snacks known for great taste, friendly vibes, and happy customers.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Objectives Section -->
-    <section class="objectives">
+    <!-- About Hero Section -->
+    <section class="about-hero">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; color: #ff6b6b;">Our Promise to You</h2>
-            
-            <div class="objective-list">
-                <div class="objective-item">
-                    <div class="objective-check">✓</div>
-                    <div>
-                        <h3>Quality Food</h3>
-                        <p>Delicious, easy-to-love meals and snacks made from quality ingredients.</p>
+            <h1>Our Story</h1>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">From Humble Beginnings</h2>
+                    <p>Bristol Foods Kikoni began in 2015 as a small street food stall near Makerere University, serving hungry students our signature Rolex at affordable prices. What started as a way to pay tuition quickly grew into a beloved local spot, thanks to our commitment to quality ingredients and bold flavors.</p>
+                    <p>In 2018, we opened our first proper restaurant opposite Nalika Hostel, expanding our menu while staying true to our roots. Today, we're proud to be one of Kampala's most popular spots for authentic Ugandan street food with a modern twist.</p>
+                    <p>Our name "Kikoni" (meaning "kitchen" in Luganda) reflects our philosophy - every dish is prepared with the same care and attention as if we were cooking for our own family in our home kitchen.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our first food stall">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="about-section" style="background-color: #f1f1f1;">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fresh ingredients">
+                </div>
+                <div class="about-text">
+                    <p>At Bristol Foods Kikoni, we're on a mission to:</p>
+                    <ul style="margin: 20px 0 20px 20px;">
+                        <li>Celebrate Uganda's vibrant street food culture while innovating with global flavors</li>
+                        <li>Source 80% of our ingredients from local farmers and producers</li>
+                        <li>Provide affordable, high-quality meals that everyone can enjoy</li>
+                        <li>Train and employ youth from our community</li>
+                        <li>Reduce food waste through careful planning and composting</li>
+                    </ul>
+                    <p>We believe good food should be accessible to all, which is why we've kept our prices student-friendly while never compromising on quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-members">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chef Amina">
+                    <h3>Chef Amina</h3>
+                    <p class="position">Head Chef</p>
+                    <p>With 12 years experience from Nairobi to Kampala, Chef Amina brings creative flair to our kitchen while staying true to traditional flavors.</p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="David">
+                    <h3>David</h3>
+                    <p class="position">Founder & Owner</p>
+                    <p>A former Makerere student himself, David started the original food stall and still oversees daily operations with passion.</p>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sarah">
+                    <h3>Sarah</h3>
+                    <p class="position">Manager</p>
+                    <p>Sarah ensures every guest feels at home, combining Ugandan hospitality with efficient service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="about-section" style="background-color: #f1f1f1;">
+        <div class="container">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="awards">
+                <!-- Award 1 -->
+                <div class="award">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Best Street Food 2023</h3>
+                    <p>Kampala Restaurant Awards</p>
+                </div>
+                
+                <!-- Award 2 -->
+                <div class="award">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certificate of Excellence</h3>
+                    <p>TripAdvisor 2022-2023</p>
+                </div>
+                
+                <!-- Award 3 -->
+                <div class="award">
+                    <i class="fas fa-star"></i>
+                    <h3>Top 10 Affordable Eats</h3>
+                    <p>Lonely Planet Uganda</p>
+                </div>
+                
+                <!-- Award 4 -->
+                <div class="award">
+                    <i class="fas fa-heart"></i>
+                    <h3>Community Champion</h3>
+                    <p>Kampala City Council 2021</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Community Involvement</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We're proud to be more than just a restaurant - we're an active part of our community:</p>
+                    <ul style="margin: 20px 0 20px 20px;">
+                        <li>Weekly donations to Nalika Hostel's student food program</li>
+                        <li>Sponsorship of local football teams</li>
+                        <li>Free culinary training for underprivileged youth</li>
+                        <li>Annual "Taste of Kampala" festival participation</li>
+                        <li>Partnership with urban farming initiatives</li>
+                    </ul>
+                    <p>Every month, we host "Community Nights" where 10% of proceeds go to a local charity.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Community event">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-cards">
+                <!-- Testimonial 1 -->
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "The Rolex here ruined all other Rolexes for me - nothing compares! I've been coming weekly since 2016."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Juliet">
+                        <div>
+                            <h4>Juliet</h4>
+                            <p>Makerere Student</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="objective-item">
-                    <div class="objective-check">✓</div>
-                    <div>
-                        <h3>Loyal Community</h3>
-                        <p>Building lasting relationships through great service and consistent experiences.</p>
+                <!-- Testimonial 2 -->
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "As a vegetarian, I appreciate how many options they have. The vegetable matoke is my comfort food!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Robert">
+                        <div>
+                            <h4>Robert</h4>
+                            <p>Local Artist</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="objective-item">
-                    <div class="objective-check">✓</div>
-                    <div>
-                        <h3>Fair Prices</h3>
-                        <p>Keeping our prices accessible so everyone can enjoy a great meal with us.</p>
+                <!-- Testimonial 3 -->
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "I bring all my international friends here to experience authentic Ugandan flavors with a modern twist."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Grace">
+                        <div>
+                            <h4>Grace</h4>
+                            <p>Tour Guide</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="container">
-        <div class="gallery">
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');" aria-label="Our fresh ingredients"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');" aria-label="Happy customers"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');" aria-label="Our cozy atmosphere"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');" aria-label="Food preparation"></div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="about-cta">
-        <div class="container">
-            <h2>Experience the Urban Bristol Difference</h2>
-            <p>Join us for a meal that feels like home</p>
-            <a href="contact.html" class="cta-button">Visit Us Today</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="careers.html">Careers</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Opposite Nalika Hostel, Kampala</p>
+                    <p><i class="fas fa-phone"></i> +256 756 798009</p>
+                    <p><i class="fas fa-envelope"></i> bristolfoodskikoni@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Saturday: 8 AM - 10 PM</p>
+                    <p>Sunday: 10 AM - 9 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
-            <p class="copyright">&copy; 2023 URBAN BRISTOL FOODS. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2025 Bristol Foods Kikoni. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
