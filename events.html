@@ -17,6 +17,7 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
+            padding-top: 80px; /* For fixed header */
         }
         
         .container {
@@ -25,13 +26,15 @@
             padding: 0 20px;
         }
         
-        /* Header Styles (Same as Homepage) */
+        /* Header Styles */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             z-index: 100;
+            top: 0;
+            left: 0;
         }
         
         .header-container {
@@ -68,15 +71,11 @@
             transition: color 0.3s;
         }
         
-        nav ul li a:hover {
+        nav ul li a:hover, .active {
             color: #e67e22;
         }
         
-        .active {
-            color: #e67e22;
-        }
-        
-        /* Events Hero Section */
+        /* Hero Section */
         .events-hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -86,7 +85,7 @@
             align-items: center;
             text-align: center;
             color: #fff;
-            margin-top: 80px;
+            margin-top: -80px; /* Offset fixed header */
         }
         
         .events-hero h1 {
@@ -94,11 +93,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
-        /* Events Content */
-        .events-content {
-            padding: 80px 0;
-        }
-        
+        /* Section Titles */
         .section-title {
             text-align: center;
             margin-bottom: 50px;
@@ -106,36 +101,12 @@
             color: #e67e22;
         }
         
-        /* Event Categories */
-        .event-categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .category-btn {
-            padding: 10px 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .category-btn:hover, .category-btn.active {
-            background: #e67e22;
-            color: #fff;
-            border-color: #e67e22;
-        }
-        
         /* Events Grid */
         .events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
+            margin-bottom: 60px;
         }
         
         .event-card {
@@ -151,6 +122,7 @@
         }
         
         .event-image {
+            width: 100%;
             height: 200px;
             overflow: hidden;
         }
@@ -219,18 +191,102 @@
         .event-cta:hover {
             background: #d35400;
         }
+
+        /* Enhanced Video Section */
+        .video-highlight {
+            margin: 60px 0;
+            grid-column: 1 / -1;
+        }
+
+        .video-container {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .video-title {
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            color: #2c3e50;
+            background: #f8f8f8;
+            margin: 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(231, 76, 60, 0.9);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button svg {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+        }
+
+        .play-button:hover {
+            background: rgba(231, 76, 60, 1);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .play-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-caption {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+            background: #f8f8f8;
+        }
         
         /* Calendar Section */
         .calendar-section {
-            background: #f1f1f1;
-            padding: 80px 0;
+            padding: 60px 0;
+            background: #f8f8f8;
         }
         
         .calendar-container {
             background: #fff;
             border-radius: 10px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .calendar-header {
@@ -251,18 +307,18 @@
         }
         
         .calendar-nav-btn {
-            background: #f1f1f1;
+            background: #e67e22;
+            color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.3s;
         }
         
         .calendar-nav-btn:hover {
-            background: #e67e22;
-            color: #fff;
+            background: #d35400;
         }
         
         .calendar-grid {
@@ -279,11 +335,17 @@
         }
         
         .calendar-day {
-            background: #f9f9f9;
-            height: 80px;
-            padding: 5px;
+            background: #f8f8f8;
             border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
             transition: all 0.3s;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .calendar-day:hover {
@@ -293,6 +355,7 @@
         
         .calendar-day.empty {
             background: transparent;
+            cursor: default;
         }
         
         .calendar-day-number {
@@ -402,7 +465,7 @@
             background: #d35400;
         }
         
-        /* Footer (Same as Homepage) */
+        /* Footer */
         footer {
             background-color: #222;
             color: #fff;
@@ -455,18 +518,24 @@
             
             nav ul {
                 margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             nav ul li {
-                margin-left: 15px;
+                margin: 0 10px 10px;
+            }
+            
+            .events-hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 28px;
             }
             
             .events-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .calendar-grid {
-                gap: 5px;
             }
             
             .calendar-day {
@@ -477,6 +546,10 @@
             .footer-section {
                 flex-basis: 100%;
                 text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
             }
         }
     </style>
@@ -492,7 +565,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="menu.html">Menu</a></li>
-                    <li><a href="bookings.html" class="active">Bookings</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="reserve.html">Reservations</a></li>
                     <li><a href="order.html">Order Online</a></li>
@@ -561,7 +634,7 @@
             <!-- Event 3 -->
             <div class="event-card">
                 <div class="event-image">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rolex Making Workshop">
+                    <img src="https://s.yimg.com/ny/api/res/1.2/3ub2Qr209F6Gw6OEr04RHQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNg--/https://media.zenfs.com/en_sg/News/AFP/2313569d6fa1ee907d01ea44e9b0d58de0aab5d8.jpg" alt="Rolex Making Workshop">
                 </div>
                 <div class="event-details">
                     <span class="event-date">SUN, APR 4 • 10AM-12PM</span>
@@ -619,6 +692,31 @@
                         <span class="event-price">Discount Event</span>
                         <a href="#" class="event-cta">Learn More</a>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="video-highlight">
+                <div class="video-container">
+                    <h3 class="video-title">Experience Bristol Foods Kikoni</h3>
+                    <div class="video-wrapper">
+                        <video 
+                            controls 
+                            poster="https://i.natgeofe.com/n/aed9f829-849c-4902-88bb-27e570c2a398/GettyImages-180258510.jpg"
+                            aria-label="Bristol Foods Kikoni promotional video"
+                            class="lazy"
+                            data-src="https://files.fm/f/gyqmbtg7j2"
+                        >
+                            <source data-src="https://files.fm/f/gyqmbtg7j2" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button class="play-button" aria-label="Play video">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="video-caption">Take a virtual tour of our restaurant and see what makes us special!</p>
                 </div>
             </div>
         </div>
@@ -846,7 +944,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Bristol Foods Kikoni. All rights reserved.</p>
+                <p>&copy; 2025 Bristol Foods Kikoni. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -878,6 +976,57 @@
             console.log('Next month');
             // Add actual calendar navigation logic
         });
+
+        // Enhanced Video Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            videoWrappers.forEach(wrapper => {
+                const video = wrapper.querySelector('video.lazy');
+                const playButton = wrapper.querySelector('.play-button');
+                const sources = video.querySelectorAll('source');
+                
+                // Lazy load video
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                sources.forEach(source => {
+                                    source.src = source.dataset.src;
+                                });
+                                video.load();
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+                    
+                    observer.observe(video);
+                } else {
+                    // Fallback for older browsers
+                    sources.forEach(source => {
+                        source.src = source.dataset.src;
+                    });
+                    video.load();
+                }
+                
+                // Play button functionality
+                playButton.addEventListener('click', () => {
+                    video.play();
+                    video.classList.add('loaded');
+                    playButton.classList.add('hidden');
+                });
+                
+                // Hide play button when video starts
+                video.addEventListener('play', () => {
+                    playButton.classList.add('hidden');
+                });
+                
+                // Show play button when video ends
+                video.addEventListener('ended', () => {
+                    playButton.classList.remove('hidden');
+                });
+            });
+        });
     </script>
 </body>
-</html>
+</html
